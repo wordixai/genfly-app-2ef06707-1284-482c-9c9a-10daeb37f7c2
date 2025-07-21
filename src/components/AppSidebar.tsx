@@ -28,7 +28,7 @@ export function AppSidebar() {
           <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
             <span className="text-white font-bold">W</span>
           </div>
-          <span className="text-xl font-bold text-white">话题社区</span>
+          <span className="text-xl font-bold text-white">话题原地</span>
         </div>
       </SidebarHeader>
       <SidebarContent className="bg-gray-900">
