@@ -19,16 +19,25 @@ export function Header() {
           </div>
         </div>
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white">
+          <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white relative">
             <Mail className="w-5 h-5" />
+            <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              5
+            </div>
           </Button>
-          <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white">
+          <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white relative">
             <Bell className="w-5 h-5" />
+            <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+              12
+            </div>
           </Button>
-          <Avatar>
-            <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" />
-            <AvatarFallback>用户</AvatarFallback>
-          </Avatar>
+          <div className="relative">
+            <Avatar>
+              <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" />
+              <AvatarFallback>用户</AvatarFallback>
+            </Avatar>
+            <div className="absolute -top-1 -right-1 bg-red-500 rounded-full w-4 h-4 border-2 border-gray-800"></div>
+          </div>
         </div>
       </div>
     </header>
