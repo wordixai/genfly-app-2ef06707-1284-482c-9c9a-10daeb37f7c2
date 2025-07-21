@@ -79,13 +79,14 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
+    
+    --sidebar-background: 220 13% 9%;
+    --sidebar-foreground: 220 9% 80%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-accent: 220 13% 11%;
+    --sidebar-accent-foreground: 220 9% 85%;
+    --sidebar-border: 220 13% 15%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -98,4 +99,19 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* 强制侧边栏暗色主题 */
+[data-sidebar="sidebar"] {
+  background-color: rgb(17 24 39) !important; /* gray-900 */
+  color: rgb(209 213 219) !important; /* gray-300 */
+  border-color: rgb(75 85 99) !important; /* gray-600 */
+}
+
+[data-sidebar="header"] {
+  background-color: rgb(17 24 39) !important; /* gray-900 */
+}
+
+[data-sidebar="content"] {
+  background-color: rgb(17 24 39) !important; /* gray-900 */
 }

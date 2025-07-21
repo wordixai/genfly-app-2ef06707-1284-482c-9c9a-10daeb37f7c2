@@ -22,8 +22,8 @@ const menuItems = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="bg-gray-800 border-gray-700">
-      <SidebarHeader className="p-4">
+    <Sidebar className="!bg-gray-900 border-gray-700">
+      <SidebarHeader className="p-4 bg-gray-900">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
             <span className="text-white font-bold">W</span>
@@ -31,7 +31,7 @@ export function AppSidebar() {
           <span className="text-xl font-bold text-white">话题社区</span>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="bg-gray-900">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -39,7 +39,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild 
-                    className="text-gray-300 hover:text-white hover:bg-gray-700 relative"
+                    className="text-gray-300 hover:text-white hover:bg-gray-800 data-[active=true]:bg-gray-800 data-[active=true]:text-white"
                   >
                     <a href={item.url} className="flex items-center space-x-3 p-3 relative">
                       <div className="relative">
