@@ -1,4 +1,4 @@
-import { Home, Hash, Bell, Mail, Bookmark, User, Settings } from "lucide-react";
+import { Home, Hash, Bell, Mail, Bookmark, User, Settings, Search } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -22,8 +22,8 @@ const menuItems = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="border-r border-gray-700">
-      <SidebarHeader className="p-4 bg-gray-800 border-b border-gray-700">
+    <Sidebar className="bg-gray-800 border-gray-700">
+      <SidebarHeader className="p-4">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
             <span className="text-white font-bold">W</span>
@@ -31,7 +31,7 @@ export function AppSidebar() {
           <span className="text-xl font-bold text-white">话题社区</span>
         </div>
       </SidebarHeader>
-      <SidebarContent className="bg-gray-800">
+      <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -39,9 +39,9 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild 
-                    className="text-gray-300 hover:text-white hover:bg-gray-700 w-full justify-start"
+                    className="text-gray-300 hover:text-white hover:bg-gray-700"
                   >
-                    <a href={item.url} className="flex items-center space-x-3 p-3 w-full">
+                    <a href={item.url} className="flex items-center space-x-3 p-3">
                       <item.icon className="w-5 h-5" />
                       <span>{item.title}</span>
                     </a>
