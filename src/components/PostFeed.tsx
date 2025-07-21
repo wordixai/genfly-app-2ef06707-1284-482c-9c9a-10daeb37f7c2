@@ -15,9 +15,7 @@ const mockPosts = [
     likes: 24,
     reposts: 8,
     comments: 12,
-    images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop"],
-    isNew: true,
-    hasUnreadComments: true
+    images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop"]
   },
   {
     id: "2",
@@ -31,9 +29,7 @@ const mockPosts = [
     likes: 156,
     reposts: 32,
     comments: 45,
-    images: ["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"],
-    isNew: false,
-    hasUnreadComments: false
+    images: ["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"]
   },
   {
     id: "3",
@@ -46,9 +42,7 @@ const mockPosts = [
     timestamp: "6小时前",
     likes: 89,
     reposts: 15,
-    comments: 28,
-    isNew: true,
-    hasUnreadComments: false
+    comments: 28
   },
   {
     id: "4",
@@ -61,9 +55,7 @@ const mockPosts = [
     timestamp: "8小时前",
     likes: 67,
     reposts: 22,
-    comments: 18,
-    isNew: false,
-    hasUnreadComments: true
+    comments: 18
   },
   {
     id: "5",
@@ -76,9 +68,7 @@ const mockPosts = [
     timestamp: "10小时前",
     likes: 123,
     reposts: 41,
-    comments: 35,
-    isNew: false,
-    hasUnreadComments: false
+    comments: 35
   }
 ];
 
@@ -98,9 +88,7 @@ export function PostFeed() {
       likes: 0,
       reposts: 0,
       comments: 0,
-      images,
-      isNew: true,
-      hasUnreadComments: false
+      images
     };
     setPosts([newPost, ...posts]);
   };

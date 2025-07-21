@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Heart, MessageCircle, Repeat2, Share, MoreHorizontal, Dot } from "lucide-react";
+import { Heart, MessageCircle, Repeat2, Share, MoreHorizontal } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 interface Post {
   id: string;
@@ -18,8 +17,6 @@ interface Post {
   reposts: number;
   comments: number;
   images?: string[];
-  isNew?: boolean;
-  hasUnreadComments?: boolean;
 }
 
 interface PostCardProps {
@@ -51,33 +48,16 @@ export function PostCard({ post }: PostCardProps) {
   };
 
   return (
-    <Card className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors relative">
-      {post.isNew && (
-        <div className="absolute top-3 right-3">
-          <Badge variant="destructive" className="text-xs">
-            新
-          </Badge>
-        </div>
-      )}
+    <Card className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors">
       <CardContent className="p-4">
         <div className="flex space-x-3">
-          <div className="relative">
-            <Avatar>
-              <AvatarImage src={post.user.avatar} />
-              <AvatarFallback>{post.user.name[0]}</AvatarFallback>
-            </Avatar>
-            {post.isNew && (
-              <div className="absolute -top-1 -right-1 bg-red-500 rounded-full w-3 h-3 border-2 border-gray-800"></div>
-            )}
-          </div>
+          <Avatar>
+            <AvatarImage src={post.user.avatar} />
+            <AvatarFallback>{post.user.name[0]}</AvatarFallback>
+          </Avatar>
           <div className="flex-1">
             <div className="flex items-center space-x-2 mb-2">
-              <h3 className="font-semibold text-white flex items-center space-x-2">
-                <span>{post.user.name}</span>
-                {post.isNew && (
-                  <div className="bg-red-500 rounded-full w-2 h-2"></div>
-                )}
-              </h3>
+              <h3 className="font-semibold text-white">{post.user.name}</h3>
               <span className="text-gray-400 text-sm">{post.user.username}</span>
               <span className="text-gray-400 text-sm">·</span>
               <span className="text-gray-400 text-sm">{post.timestamp}</span>
@@ -102,13 +82,10 @@ export function PostCard({ post }: PostCardProps) {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-400 hover:text-blue-400 hover:bg-blue-400/10 relative"
+                className="text-gray-400 hover:text-blue-400 hover:bg-blue-400/10"
               >
                 <MessageCircle className="w-4 h-4 mr-1" />
                 {post.comments}
-                {post.hasUnreadComments && (
-                  <div className="absolute -top-1 -right-1 bg-red-500 rounded-full w-2 h-2"></div>
-                )}
               </Button>
               <Button
                 variant="ghost"
