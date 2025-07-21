@@ -3,20 +3,34 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Image, MapPin, Calendar, Smile } from "lucide-react";
 
 interface PostComposerProps {
   onPost: (content: string, images: string[]) => void;
 }
 
+const emojiCategories = {
+  "表情": ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😊", "😇", "🙂", "🙃", "😉", "😌", "😍", "🥰", "😘", "😗", "😙", "😚", "😋", "😛", "😝", "😜", "🤪", "🤨", "🧐", "🤓", "😎", "🤩"],
+  "手势": ["👍", "👎", "👌", "✌️", "🤞", "🤟", "🤘", "🤙", "👈", "👉", "👆", "🖕", "👇", "☝️", "👋", "🤚", "🖐️", "✋", "🖖", "👏", "🙌", "🤝", "🙏", "✍️", "💪", "🦵", "🦶"],
+  "爱心": ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤍", "🤎", "💕", "💞", "💓", "💗", "💖", "💘", "💝", "💟", "♥️", "💯", "💢", "💥", "💫", "💦", "💨"],
+  "物品": ["🎉", "🎊", "🎈", "🎁", "🏆", "🥇", "🥈", "🥉", "⭐", "🌟", "💫", "✨", "🎯", "🎮", "🎲", "🎪", "🎭", "🎨", "🎬", "🎤", "🎧", "🎵", "🎶", "📱", "💻", "📷", "📹", "📺", "📻", "⏰"],
+  "食物": ["🍎", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍅", "🍆", "🥑", "🥦", "🥬", "🥒", "🌶️", "🫑", "🌽", "🥕", "🫒", "🧄", "🧅", "🍄", "🥜"],
+};
+
 export function PostComposer({ onPost }: PostComposerProps) {
   const [content, setContent] = useState("");
+  const [activeEmojiCategory, setActiveEmojiCategory] = useState("表情");
 
   const handleSubmit = () => {
     if (content.trim()) {
       onPost(content, []);
       setContent("");
     }
+  };
+
+  const handleEmojiClick = (emoji: string) => {
+    setContent(prev => prev + emoji);
   };
 
   return (
@@ -32,19 +46,62 @@ export function PostComposer({ onPost }: PostComposerProps) {
               placeholder="分享你的想法..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="bg-transparent border-none resize-none text-xl placeholder-gray-400 text-white min-h-[120px]"
+              className="bg-transparent border-none resize-none text-xl placeholder-gray-400 text-white min-h-[120px] focus-visible:ring-0"
             />
             <div className="flex items-center justify-between mt-4">
               <div className="flex space-x-4">
-                <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
+                <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300 hover:bg-blue-400/10">
                   <Image className="w-4 h-4 mr-1" />
                   图片
                 </Button>
-                <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
-                  <Smile className="w-4 h-4 mr-1" />
-                  表情
-                </Button>
-                <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
+                
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300 hover:bg-blue-400/10">
+                      <Smile className="w-4 h-4 mr-1" />
+                      表情
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-80 p-0 bg-gray-800 border-gray-700" align="start">
+                    <div className="flex flex-col">
+                      {/* 表情分类标签 */}
+                      <div className="flex border-b border-gray-700 bg-gray-800">
+                        {Object.keys(emojiCategories).map((category) => (
+                          <Button
+                            key={category}
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setActiveEmojiCategory(category)}
+                            className={`flex-1 rounded-none border-b-2 transition-colors ${
+                              activeEmojiCategory === category
+                                ? "border-blue-500 text-blue-400 bg-gray-700"
+                                : "border-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-700"
+                            }`}
+                          >
+                            {category}
+                          </Button>
+                        ))}
+                      </div>
+                      
+                      {/* 表情网格 */}
+                      <div className="p-4 max-h-64 overflow-y-auto">
+                        <div className="grid grid-cols-8 gap-2">
+                          {emojiCategories[activeEmojiCategory as keyof typeof emojiCategories].map((emoji, index) => (
+                            <button
+                              key={index}
+                              onClick={() => handleEmojiClick(emoji)}
+                              className="w-8 h-8 text-xl hover:bg-gray-700 rounded transition-colors flex items-center justify-center"
+                            >
+                              {emoji}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </PopoverContent>
+                </Popover>
+
+                <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300 hover:bg-blue-400/10">
                   <MapPin className="w-4 h-4 mr-1" />
                   位置
                 </Button>
@@ -52,7 +109,7 @@ export function PostComposer({ onPost }: PostComposerProps) {
               <Button 
                 onClick={handleSubmit}
                 disabled={!content.trim()}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
+                className="bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-600 disabled:text-gray-400"
               >
                 发表
               </Button>
