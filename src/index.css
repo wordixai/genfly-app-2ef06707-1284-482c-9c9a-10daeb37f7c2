@@ -35,19 +35,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -101,17 +94,18 @@
   }
 }
 
-/* 强制侧边栏暗色主题 */
+/* 强制侧边栏亮色主题 */
 [data-sidebar="sidebar"] {
-  background-color: rgb(17 24 39) !important; /* gray-900 */
-  color: rgb(209 213 219) !important; /* gray-300 */
-  border-color: rgb(75 85 99) !important; /* gray-600 */
+  background-color: rgb(255 255 255) !important; /* white */
+  color: rgb(55 65 81) !important; /* gray-700 */
+  border-color: rgb(229 231 235) !important; /* gray-200 */
 }
 
 [data-sidebar="header"] {
-  background-color: rgb(17 24 39) !important; /* gray-900 */
+  background-color: rgb(255 255 255) !important; /* white */
+  border-color: rgb(243 244 246) !important; /* gray-100 */
 }
 
 [data-sidebar="content"] {
-  background-color: rgb(17 24 39) !important; /* gray-900 */
+  background-color: rgb(255 255 255) !important; /* white */
 }

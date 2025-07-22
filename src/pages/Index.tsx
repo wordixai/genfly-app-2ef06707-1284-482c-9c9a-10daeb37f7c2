@@ -6,7 +6,7 @@ import { TrendingSidebar } from "@/components/TrendingSidebar";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <SidebarProvider>
         <div className="flex min-h-screen">
           <AppSidebar />

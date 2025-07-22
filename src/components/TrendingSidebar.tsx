@@ -35,9 +35,9 @@ const recommendedUsers = [
 export function TrendingSidebar() {
   return (
     <div className="space-y-6">
-      <Card className="bg-gray-800 border-gray-700">
+      <Card className="bg-white border-gray-200 shadow-sm">
         <CardHeader>
-          <CardTitle className="text-white flex items-center">
+          <CardTitle className="text-gray-900 flex items-center">
             <TrendingUp className="w-5 h-5 mr-2" />
             热门话题
           </CardTitle>
@@ -46,19 +46,19 @@ export function TrendingSidebar() {
           {trendingTopics.map((topic, index) => (
             <div key={topic.name} className="flex items-center justify-between">
               <div>
-                <p className="text-blue-400 font-medium hover:underline cursor-pointer">
+                <p className="text-blue-600 font-medium hover:underline cursor-pointer">
                   {topic.name}
                 </p>
-                <p className="text-gray-400 text-sm">{topic.posts} 讨论</p>
+                <p className="text-gray-500 text-sm">{topic.posts} 讨论</p>
               </div>
               <Badge 
                 variant={topic.trend === "up" ? "default" : "secondary"}
                 className={
                   topic.trend === "up" 
-                    ? "bg-green-600 text-white" 
+                    ? "bg-green-100 text-green-700 border-green-200" 
                     : topic.trend === "stable"
-                    ? "bg-yellow-600 text-white"
-                    : "bg-red-600 text-white"
+                    ? "bg-yellow-100 text-yellow-700 border-yellow-200"
+                    : "bg-red-100 text-red-700 border-red-200"
                 }
               >
                 {index + 1}
@@ -68,9 +68,9 @@ export function TrendingSidebar() {
         </CardContent>
       </Card>
 
-      <Card className="bg-gray-800 border-gray-700">
+      <Card className="bg-white border-gray-200 shadow-sm">
         <CardHeader>
-          <CardTitle className="text-white flex items-center">
+          <CardTitle className="text-gray-900 flex items-center">
             <Users className="w-5 h-5 mr-2" />
             推荐关注
           </CardTitle>
@@ -85,11 +85,11 @@ export function TrendingSidebar() {
                   className="w-8 h-8 rounded-full"
                 />
                 <div>
-                  <p className="text-white font-medium">{user.name}</p>
-                  <p className="text-gray-400 text-sm">{user.followers} 关注者</p>
+                  <p className="text-gray-900 font-medium">{user.name}</p>
+                  <p className="text-gray-500 text-sm">{user.followers} 关注者</p>
                 </div>
               </div>
-              <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
+              <Button size="sm" variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                 关注
               </Button>
             </div>
@@ -97,22 +97,22 @@ export function TrendingSidebar() {
         </CardContent>
       </Card>
 
-      <Card className="bg-gray-800 border-gray-700">
+      <Card className="bg-white border-gray-200 shadow-sm">
         <CardHeader>
-          <CardTitle className="text-white flex items-center">
+          <CardTitle className="text-gray-900 flex items-center">
             <Calendar className="w-5 h-5 mr-2" />
             即将开始
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            <div className="p-3 bg-gray-700 rounded-lg">
-              <p className="text-white font-medium">AI技术交流会</p>
-              <p className="text-gray-400 text-sm">今天 19:00</p>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <p className="text-gray-900 font-medium">AI技术交流会</p>
+              <p className="text-gray-500 text-sm">今天 19:00</p>
             </div>
-            <div className="p-3 bg-gray-700 rounded-lg">
-              <p className="text-white font-medium">摄影作品分享</p>
-              <p className="text-gray-400 text-sm">明天 14:30</p>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <p className="text-gray-900 font-medium">摄影作品分享</p>
+              <p className="text-gray-500 text-sm">明天 14:30</p>
             </div>
           </div>
         </CardContent>

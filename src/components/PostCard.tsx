@@ -48,24 +48,24 @@ export function PostCard({ post }: PostCardProps) {
   };
 
   return (
-    <Card className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors">
+    <Card className="bg-white border-gray-200 hover:bg-gray-50 transition-colors shadow-sm">
       <CardContent className="p-4">
         <div className="flex space-x-3">
           <Avatar>
             <AvatarImage src={post.user.avatar} />
-            <AvatarFallback>{post.user.name[0]}</AvatarFallback>
+            <AvatarFallback className="bg-gray-200 text-gray-600">{post.user.name[0]}</AvatarFallback>
           </Avatar>
           <div className="flex-1">
             <div className="flex items-center space-x-2 mb-2">
-              <h3 className="font-semibold text-white">{post.user.name}</h3>
-              <span className="text-gray-400 text-sm">{post.user.username}</span>
+              <h3 className="font-semibold text-gray-900">{post.user.name}</h3>
+              <span className="text-gray-500 text-sm">{post.user.username}</span>
               <span className="text-gray-400 text-sm">·</span>
-              <span className="text-gray-400 text-sm">{post.timestamp}</span>
-              <Button variant="ghost" size="sm" className="ml-auto p-1 h-auto">
-                <MoreHorizontal className="w-4 h-4 text-gray-400" />
+              <span className="text-gray-500 text-sm">{post.timestamp}</span>
+              <Button variant="ghost" size="sm" className="ml-auto p-1 h-auto text-gray-400 hover:text-gray-600 hover:bg-gray-100">
+                <MoreHorizontal className="w-4 h-4" />
               </Button>
             </div>
-            <p className="text-white mb-3 leading-relaxed">{post.content}</p>
+            <p className="text-gray-900 mb-3 leading-relaxed">{post.content}</p>
             {post.images && post.images.length > 0 && (
               <div className="mb-3">
                 {post.images.map((image, index) => (
@@ -73,7 +73,7 @@ export function PostCard({ post }: PostCardProps) {
                     key={index}
                     src={image}
                     alt=""
-                    className="w-full rounded-lg border border-gray-600"
+                    className="w-full rounded-lg border border-gray-200"
                   />
                 ))}
               </div>
@@ -82,7 +82,7 @@ export function PostCard({ post }: PostCardProps) {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-400 hover:text-blue-400 hover:bg-blue-400/10"
+                className="text-gray-500 hover:text-blue-600 hover:bg-blue-50"
               >
                 <MessageCircle className="w-4 h-4 mr-1" />
                 {post.comments}
@@ -91,8 +91,8 @@ export function PostCard({ post }: PostCardProps) {
                 variant="ghost"
                 size="sm"
                 onClick={handleRepost}
-                className={`hover:bg-green-400/10 ${
-                  reposted ? "text-green-400" : "text-gray-400 hover:text-green-400"
+                className={`hover:bg-green-50 ${
+                  reposted ? "text-green-600" : "text-gray-500 hover:text-green-600"
                 }`}
               >
                 <Repeat2 className="w-4 h-4 mr-1" />
@@ -102,8 +102,8 @@ export function PostCard({ post }: PostCardProps) {
                 variant="ghost"
                 size="sm"
                 onClick={handleLike}
-                className={`hover:bg-red-400/10 ${
-                  liked ? "text-red-400" : "text-gray-400 hover:text-red-400"
+                className={`hover:bg-red-50 ${
+                  liked ? "text-red-600" : "text-gray-500 hover:text-red-600"
                 }`}
               >
                 <Heart className={`w-4 h-4 mr-1 ${liked ? "fill-current" : ""}`} />
@@ -112,7 +112,7 @@ export function PostCard({ post }: PostCardProps) {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-400 hover:text-blue-400 hover:bg-blue-400/10"
+                className="text-gray-500 hover:text-blue-600 hover:bg-blue-50"
               >
                 <Share className="w-4 h-4" />
               </Button>
